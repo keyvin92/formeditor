@@ -3,7 +3,6 @@ pipeline {
     tools {
         maven '3.5.2'
         jdk '1.8.0_181'
-	docker '18.06.1-ce'
     }
     stages {
         stage ('Initialize Build Tools') {
