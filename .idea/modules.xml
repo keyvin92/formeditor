@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/commandlineeditor/commandlineeditor.iml" filepath="$PROJECT_DIR$/commandlineeditor/commandlineeditor.iml" />
+      <module fileurl="file://$PROJECT_DIR$/formeditor.iml" filepath="$PROJECT_DIR$/formeditor.iml" />
+      <module fileurl="file://$PROJECT_DIR$/model/model.iml" filepath="$PROJECT_DIR$/model/model.iml" />
+      <module fileurl="file://$PROJECT_DIR$/service/service.iml" filepath="$PROJECT_DIR$/service/service.iml" />
+      <module fileurl="file://$PROJECT_DIR$/vaadineditor/vaadineditor.iml" filepath="$PROJECT_DIR$/vaadineditor/vaadineditor.iml" />
+    </modules>
+  </component>
+</project>
