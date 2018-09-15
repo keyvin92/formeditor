@@ -22,7 +22,9 @@ pipeline {
         }
 
 	stage ('Build Docker Container') {
+	    steps {
 		sh 'docker build - < Dockerfile'
+	    }
 	}
     }
 }
