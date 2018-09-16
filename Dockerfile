@@ -3,3 +3,5 @@ MAINTAINER 'keyvin92@googlemail.com'
 
 ADD target/vaadineditor-1.0-SNAPSHOT.war /usr/tomcat/webapps/
 
+EXPOSE 8080
+

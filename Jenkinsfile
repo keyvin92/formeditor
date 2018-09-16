@@ -9,4 +9,8 @@ node {
 		sh "docker build . -t vaadineditor"
 	}
 
+	stage ('Run Docker Container') {
+		sh "docker run vaadineditor"
+	}
+
 }
