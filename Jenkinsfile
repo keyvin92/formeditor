@@ -1,6 +1,7 @@
 node {
 	def mavenBuild = tool '3.5.2'
 	def branchName
+	def webappPort
 
 	stage ('Checkout SCM') {
 		checkout scm
@@ -25,10 +26,12 @@ node {
 
 	stage ('Run Docker Container') {
 		sh "docker run -d -p 0:8080 --name ${branchName} ${branchName}"
+		webappPort = sh "$((sudo docker port master) | cut -d':' -f2)"
 	}
 
 	stage ('Run Tests') {
-		echo 'Todo add tests to run here.'
+		echo "Instance running on http://0.0.0.0:${webappPort}"
+		echo 'TODO: add tests to run here'
 	}
 
 }
