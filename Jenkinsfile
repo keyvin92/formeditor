@@ -1,6 +1,6 @@
 node {
 	def mavenBuild = tool '3.5.2'
-	def branchName = env.BRANCH_NAME
+	def branchName
 
 	stage ('Checkout SCM') {
 		checkout scm
@@ -11,12 +11,16 @@ node {
 		sh "${mavenBuild}/bin/mvn install"	
 	}
 
+	stage ('Configure Environment') {
+		branchName = env.BRANCH_NAME
+	}
+
 	stage ('Build Docker Image') {
 		sh "docker build --no-cache -t ${branchName} ."
 	}
 
 	stage ('Run Docker Container') {
-		sh "docker run -d -p 8081:8080 ${branchName}"
+		sh "docker run -d -p 0:8080 ${branchName}"
 	}
 
 }
