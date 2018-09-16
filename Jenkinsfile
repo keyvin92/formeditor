@@ -1,5 +1,5 @@
 node {
-	def buildJobName = ${env.NODE_NAME}
+	def buildJobName = env.NODE_NAME
 	def mavenBuild = Artifactory.newMavenBuild()
 	def buildInfo
 	
