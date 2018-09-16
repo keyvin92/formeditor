@@ -16,7 +16,7 @@ node {
 
 	stage ('Stop Running Docker Container') {
 		sh "docker stop ${branchName}"
-		sh "docker rm ${branchName}
+		sh "docker rm ${branchName}"
 	}
 
 	stage ('Build Docker Image') {
