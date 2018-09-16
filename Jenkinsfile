@@ -19,7 +19,11 @@ node {
 	}
 
 	stage ('Stop Running Docker Container') {
-		sh "docker stop ${branchName}" || true
+		try {
+			sh "docker stop ${branchName}"
+		} catch (exc) {
+			echo "Docker container ${branchName} was not stopped"
+		}
 		sh "docker rm ${branchName}"
 	}
 
@@ -28,7 +32,11 @@ node {
 	}
 
 	stage ('Run Database Docker Container') {
-		sh "docker stop mssql${branchName}" || true
+		try {
+			sh "docker stop mssql${branchName}"
+		} catch (exc) {
+			echo "Docker container mssql${branchName} was not stopped"
+		}
 		sh "docker run -e 'ACCEPT_EULA=Y' -e 'SA_PASSWORD=Test_2018' --name mssql${branchName} -d -p 0:1433 microsoft/mssql-server-linux:2017-latest"
 		databasePort = sh(returnStdout: true, script: "((docker port mssql${branchName}) | cut -d':' -f2)")
 		echo "Database is running on http://0.0.0.0:${databasePort}"
