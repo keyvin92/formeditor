@@ -21,10 +21,10 @@ node {
 	stage ('Stop Running Docker Container') {
 		try {
 			sh "docker stop ${branchName}"
+			sh "docker rm ${branchName}"
 		} catch (exc) {
 			echo "Docker container ${branchName} was not stopped"
 		}
-		sh "docker rm ${branchName}"
 	}
 
 	stage ('Build Docker Image') {
@@ -34,6 +34,7 @@ node {
 	stage ('Run Database Docker Container') {
 		try {
 			sh "docker stop mssql${branchName}"
+			sh "docker rm mssql${branchName}"
 		} catch (exc) {
 			echo "Docker container mssql${branchName} was not stopped"
 		}
