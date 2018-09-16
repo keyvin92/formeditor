@@ -20,7 +20,7 @@ node {
 	}
 
 	stage ('Run Docker Container') {
-		sh "docker run -d -p 0:8080 ${branchName}"
+		sh "docker run -d -p 0:8080 --name ${branchName} ${branchName}"
 	}
 
 }
