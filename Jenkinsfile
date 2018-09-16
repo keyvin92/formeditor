@@ -6,7 +6,7 @@ node {
 	}
 
 	stage ('Build Docker Image') {
-		sh "docker build"
+		sh "sudo docker build - < Dockerfile"
 	}
 
 }
