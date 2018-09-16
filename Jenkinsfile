@@ -20,7 +20,12 @@ node {
 	}
 
 	stage ('Run Docker Container') {
+		sh "docker stop ${branchName}"
 		sh "docker run -d -p 0:8080 --name ${branchName} ${branchName}"
+	}
+
+	stage ('Run Tests') {
+		echo 'Todo add tests to run here.'
 	}
 
 }
