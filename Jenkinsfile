@@ -11,7 +11,7 @@ node {
 
 	stage ('Build Webapp') {
 		sh "${mavenBuild}/bin/mvn install"	
-		webappContext = sh(returnStdout: true, script: "ls target/*.war")
+		webappContext = sh(returnStdout: true, script: "ls target/*.war | cut -d'/' -f2")
 	}
 
 	stage ('Configure Environment') {
