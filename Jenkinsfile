@@ -3,7 +3,7 @@ node {
 	def buildInfo
 
 	stage 'build' {
-		sh "${mavenBuild} install"	
+		sh "${mavenBuild}/bin/mvn install"	
 	}
 
 }
