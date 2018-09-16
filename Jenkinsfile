@@ -26,7 +26,7 @@ node {
 
 	stage ('Run Docker Container') {
 		sh "docker run -d -p 0:8080 --name ${branchName} ${branchName}"
-		webappPort = sh "((docker port master) | cut -d':' -f2)"
+		webappPort = sh(returnStdout: true, script: "((docker port ${branchName}) | cut -d':' -f2)")
 	}
 
 	stage ('Run Tests') {
