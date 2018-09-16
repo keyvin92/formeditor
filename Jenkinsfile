@@ -7,7 +7,6 @@ node {
 	}
 
 	stage ('Build Webapp') {
-//		sh "${mavenBuild}/bin/mvn clean"
 		sh "${mavenBuild}/bin/mvn install"	
 	}
 
@@ -15,12 +14,16 @@ node {
 		branchName = env.BRANCH_NAME
 	}
 
+	stage ('Stop Running Docker Container') {
+		sh "docker stop ${branchName}"
+		sh "docker rm ${branchName}
+	}
+
 	stage ('Build Docker Image') {
 		sh "docker build --no-cache -t ${branchName} ."
 	}
 
 	stage ('Run Docker Container') {
-		sh "docker stop ${branchName}"
 		sh "docker run -d -p 0:8080 --name ${branchName} ${branchName}"
 	}
 
