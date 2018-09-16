@@ -10,7 +10,7 @@ node {
 	}
 
 	stage ('Run Docker Container') {
-		sh "docker run vaadineditor"
+		sh "docker run -d -p 8080:8081 vaadineditor"
 	}
 
 }
