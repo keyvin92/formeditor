@@ -7,7 +7,7 @@ node {
 	}
 
 	stage ('Build Docker Image') {
-		sh "docker build . -- no-cache -t vaadineditor"
+		sh "docker build -- no-cache -t vaadineditor ."
 	}
 
 	stage ('Run Docker Container') {
